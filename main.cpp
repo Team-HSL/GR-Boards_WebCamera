@@ -8,7 +8,7 @@
 #include "RomRamBlockDevice.h"
 #include "SDBlockDevice_GRBoard.h"
 #if defined(TARGET_RZ_A1H)
-#include "file_table_peach.h"        //Binary data of web pages
+#include "file_table_peach.h"         //Binary data of web pages
 #elif defined(TARGET_GR_LYCHEE)
 #include "file_table_lychee.h"        //Binary data of web pages
 #endif
@@ -22,7 +22,7 @@
   #define SUBNET_MASK          ("255.255.255.0")   /* Subnet mask     */
   #define DEFAULT_GATEWAY      ("192.168.0.3")     /* Default gateway */
 #endif
-#define NETWORK_TYPE           (2)                 /* Select  0(Ethernet), 1(BP3595), 2(ESP32) */
+#define NETWORK_TYPE           (2)                 /* Select  0(Ethernet), 1(BP3595), 2(ESP32 STA) ,3(ESP32 AP) */
 #if (NETWORK_TYPE >= 1)
   #define SCAN_NETWORK         (1)                 /* Select  0(Use WLAN_SSID, WLAN_PSK, WLAN_SECURITY) or 1(To select a network using the terminal.) */
   #define WLAN_SSID            ("SSIDofYourAP")    /* SSID */
@@ -43,6 +43,9 @@
 #elif (NETWORK_TYPE == 2)
   #include "ESP32Interface.h"
   ESP32Interface network(P5_3, P3_14, P3_15, P0_2);
+#elif (NETWORK_TYPE == 3)
+  #include "ESP32InterfaceAP.h"
+  ESP32InterfaceAP network(P5_3, P3_14, P3_15, P0_2);
 #else
   #error NETWORK_TYPE error
 #endif /* NETWORK_TYPE */
@@ -256,7 +259,7 @@ static void SetI2CfromWeb(Arguments* arg, Reply* r) {
     }
 }
 
-#if (SCAN_NETWORK == 1)
+#if (SCAN_NETWORK == 1) && (NETWORK_TYPE != 3)
 static const char *sec2str(nsapi_security_t sec) {
     switch (sec) {
         case NSAPI_SECURITY_NONE:
@@ -289,7 +292,7 @@ static bool scan_network(WiFiInterface *wifi) {
     }
     count = wifi->scan(ap, count);
     for (i = 0; i < count; i++) {
-        printf("No.%d Network: %s secured: %s BSSID: %2hhx:%2hhx:%2hhx:%2hhx:%2hhx:%2hhx RSSI: %hhd Ch: %hhd\r\n",
+        printf("No.%d Network: %s secured: %s BSSID: %02hhx:%02hhx:%02hhx:%02hhx:%02hhx:%02hhx RSSI: %hhd Ch: %hhd\r\n",
                i, ap[i].get_ssid(), sec2str(ap[i].get_security()),
                ap[i].get_bssid()[0], ap[i].get_bssid()[1], ap[i].get_bssid()[2], ap[i].get_bssid()[3],
                ap[i].get_bssid()[4], ap[i].get_bssid()[5], ap[i].get_rssi(), ap[i].get_channel());
@@ -335,7 +338,6 @@ static bool scan_network(WiFiInterface *wifi) {
                         break;
                 }
             }
-            printf("connecting...\r\n");
             wifi->set_credentials(ap[select_no].get_ssid(), pass, ap[select_no].get_security());
             ret = true;
         }
@@ -406,12 +408,14 @@ int main(void) {
 #endif
 
 #if (NETWORK_TYPE >= 1)
-#if (SCAN_NETWORK == 1)
+#if (SCAN_NETWORK == 1) && (NETWORK_TYPE != 3)
     while (!scan_network(&network));
 #else
     network.set_credentials(WLAN_SSID, WLAN_PSK, WLAN_SECURITY);
 #endif
 #endif
+
+    printf("\r\nConnecting...\r\n");
     if (network.connect() != 0) {
         printf("Network Connect Error \r\n");
         return -1;

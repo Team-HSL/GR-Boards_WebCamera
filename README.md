@@ -11,7 +11,7 @@ Webカメラのサンプルです。Webブラウザからアクセスすると�
 * LED操作画面
 
 ## [事前準備] ESP32をATコマンド用のファームウェアに書き換える
-本サンプルプログラムを使用する際はESP32をATコマンド用のファームウェアに書き換える必要があります。  
+本サンプルプログラムをGR-LYCHEEで使用する際はESP32をATコマンド用のファームウェアに書き換える必要があります。  
 ここでは、``GR-LYCHEE_ESP32_Serial_Bridge``と``Windows PC版 Flash Download Tools V3.4.4``を使った書き込み方法を紹介します。  
 
 まずはプロジェクト内`docs\esp32-at_bin.zip`を展開し、``GR-LYCHEE_ESP32_Serial_Bridge.bin``をGR-LYCHEEに書き込んでください。  
@@ -116,6 +116,40 @@ http://espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=
   スイッチはそれぞれGR-BoardのLEDの現在の状態を表しており、ONにすると対応するLEDの色になります。  
 
 8. メニュー画面の"Top Page"をクリックすると、 トップ画面が表示されます。
+
+
+### SD内のWebページを表示する
+SDを接続するとTerminal上に ``SDBlockDevice`` と表示され、Webブラウザでアクセスした際の表示が内蔵ROMからSD内のファイルシステムに切り替わります。
+Webブラウザでからアクセスした際のトップ画面はSDルート直下の ``index.htm`` となります。  
+
+
+### ネットワークの接続方法を変更する
+``main.cpp``の下記マクロを変更することでネットワークの接続方法を変更できます。  
+GR-LYCHEEを付属品のみで動作させる場合はNETWORK_TYPE 2と3が選択できます。  
+
+```cpp
+/**** User Selection *********/
+#define NETWORK_TYPE           (2)                 /* Select  0(Ethernet), 1(BP3595), 2(ESP32 STA) ,3(ESP32 AP) */
+#if (NETWORK_TYPE >= 1)
+  #define SCAN_NETWORK         (1)                 /* Select  0(Use WLAN_SSID, WLAN_PSK, WLAN_SECURITY) or 1(To select a network using the terminal.) */
+  #define WLAN_SSID            ("SSIDofYourAP")    /* SSID */
+  #define WLAN_PSK             ("PSKofYourAP")     /* PSK(Pre-Shared Key) */
+  #define WLAN_SECURITY        NSAPI_SECURITY_WPA_WPA2 /* NSAPI_SECURITY_NONE, NSAPI_SECURITY_WEP, NSAPI_SECURITY_WPA, NSAPI_SECURITY_WPA2 or NSAPI_SECURITY_WPA_WPA2 */
+#endif
+```
+
+``NETWORK_TYPE`` に設定する値により、以下の接続方法に切り替わります。  
+
+| 番号 | 接続方法 | 補足                                          |
+|:-----|:---------|:----------------------------------------------|
+| 0    | Ethernet | GR-PEACHのみ。                                |
+| 1    | BP3595   | 別途BP3595を用意する必要があります。          |
+| 2    | ESP32 STA| GR-LYHCEEのみ。ESP32をSTAモードで使用します。 |
+| 3    | ESP32 AP | GR-LYHCEEのみ。ESP32をAPモードで使用します。  |
+
+``NETWORK_TYPE = 1 or 2``で動作させる場合、WLAN_SSID、WLAN_PSK、WLAN_SECURITYは接続先アクセスポイント(AP)の情報を設定します。但し、``SCAN_NETWORK = 1``の場合はこれらの値は参照されず、Terminal上に表示されるscan結果を基に接続先を選択します。  
+
+``NETWORK_TYPE = 3``で動作させる場合、WLAN_SSID、WLAN_PSK、WLAN_SECURITYはESP32が公開するAPとしての情報を設定します。  
 
 
 ### カメラ画像のサイズを変更する

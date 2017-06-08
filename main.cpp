@@ -403,7 +403,6 @@ int main(void) {
     network.set_dhcp(false);
     if (network.set_network(IP_ADDRESS, SUBNET_MASK, DEFAULT_GATEWAY) != 0) { //for Static IP Address (IPAddress, NetMasks, Gateway)
         printf("Network Set Network Error \r\n");
-        return -1;
     }
 #endif
 

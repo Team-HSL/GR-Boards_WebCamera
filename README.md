@@ -129,3 +129,36 @@ API``SetQuality()``の上限は**100**ですが、JPEG変換結果を格納す�
 #define VIDEO_PIXEL_HW       (320u)  /* QVGA */
 #define VIDEO_PIXEL_VW       (240u)  /* QVGA */
 ```
+
+### カメラの設定
+カメラの指定を行う場合は``mbed_app.json``に``camera-type``を追加してください。
+```json
+{
+    "config": {
+        "camera":{
+            "help": "0:disable 1:enable",
+            "value": "1"
+        },
+        "camera-type":{
+            "help": "Please see mbed-gr-libs/README.md",
+            "value": "CAMERA_CVBS"
+        },
+        "lcd":{
+            "help": "0:disable 1:enable",
+            "value": "1"
+        }
+    }
+}
+```
+
+| camera-type "value"     | 説明                               |
+|:------------------------|:-----------------------------------|
+| CAMERA_CVBS             | GR-PEACH NTSC信号                  |
+| CAMERA_MT9V111          | GR-PEACH MT9V111                   |
+| CAMERA_OV7725           | GR-LYHCEE 付属カメラ               |
+| CAMERA_OV5642           | GR-PEACH OV5642                    |
+| CAMERA_WIRELESS_CAMERA  | GR-PEACH Wireless/Cameraシールド (OV7725) |
+
+camera-typeとlcd-typeを指定しない場合は以下の設定となります。  
+* GR-PEACH、カメラ：CAMERA_MT9V111  
+* GR-LYCHEE、カメラ：CAMERA_OV7725  

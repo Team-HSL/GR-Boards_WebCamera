@@ -38,8 +38,7 @@
   #include "EthernetInterface.h"
   EthernetInterface network;
 #elif (NETWORK_TYPE == 1)
-  #include "LWIPBP3595Interface.h"
-  LWIPBP3595Interface network;
+  #error "Not supported"
 #elif (NETWORK_TYPE == 2)
   #include "ESP32Interface.h"
   #if defined(TARGET_RZ_A1H)

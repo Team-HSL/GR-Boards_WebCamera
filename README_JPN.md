@@ -40,7 +40,6 @@ https://github.com/d-kato/GR-Boards_ESP32_Serial_Bridge
   Mbedでのボーレートのデフォルト値は9600で、このサンプルではボーレート9600を使います。  
   https://developer.mbed.org/teams/Renesas/wiki/GR-PEACH-Getting-Started#install-the-usb-serial-communication  
   https://developer.mbed.org/handbook/SerialPC  
-
   ```
   ********* PROGRAM START ***********
   Network Setting up...
@@ -52,15 +51,12 @@ https://github.com/d-kato/GR-Boards_ESP32_Serial_Bridge
   Please enter the number of the network you want to connect.
   Enter key:[0]-[1], (If inputting the other key, it's scanned again.)
   ```
-
   接続したいネットワークの番号をキーボードから入力します。  
   0番のSSID_1を選択する場合はキーボードの "0" を押します。  
-
   ```
   [SSID_1] is selected.
   please enter the PSK.
   ```
-
   最後にネットワークに接続するためのパスワードを入力します。    
 
 3. 接続に成功すると、Terminal上にIPアドレスが出力されます。  

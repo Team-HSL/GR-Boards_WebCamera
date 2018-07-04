@@ -40,7 +40,6 @@ https://github.com/d-kato/GR-Boards_ESP32_Serial_Bridge
 2. When you press the reset button of GR-Board, the scan result of Wifi will be output on Terminal. Please refer to the following link for usage of Terminal. The default value of the bow rate with mbed is 9600, and in this sample we use the baud rate 9600.   
   https://developer.mbed.org/teams/Renesas/wiki/GR-PEACH-Getting-Started#install-the-usb-serial-communication  
   https://developer.mbed.org/handbook/SerialPC  
-
   ```
   ********* PROGRAM START ***********
   Network Setting up...
@@ -52,15 +51,12 @@ https://github.com/d-kato/GR-Boards_ESP32_Serial_Bridge
   Please enter the number of the network you want to connect.
   Enter key:[0]-[1], (If inputting the other key, it's scanned again.)
   ```
-
   Enter the number of the network you want to connect from the keyboard.
   To select SSID_1, press "0" on the keyboard.  
-
   ```
   [SSID_1] is selected.
   please enter the PSK.
   ```
-
   Finally, enter the password to connect to the network.    
 
 3. If the connection is successful, the IP address is output on Terminal.  

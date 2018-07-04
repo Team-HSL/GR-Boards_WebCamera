@@ -14,15 +14,15 @@ This is a web camera sample program. When accessing from the Web browser, the fo
 
 ### In the case of GR-PEACH
 * [GR-PEACH](https://os.mbed.com/platforms/Renesas-GR-PEACH/)
-* One of the following cameras
- * NTSC camera
- * MT9V111 and [GR-PEACH AUDIO CAMERA Shield](https://os.mbed.com/teams/Renesas/wiki/Audio_Camera-shield)
- * OV5642 and [GR-PEACH AUDIO CAMERA Shield](https://os.mbed.com/teams/Renesas/wiki/Audio_Camera-shield)
- * GR-PEACH Wireless CAMERA Shield : OV7725
+* One of the following cameras  
+  * NTSC camera
+  * MT9V111 and [GR-PEACH AUDIO CAMERA Shield](https://os.mbed.com/teams/Renesas/wiki/Audio_Camera-shield)
+  * OV5642 and [GR-PEACH AUDIO CAMERA Shield](https://os.mbed.com/teams/Renesas/wiki/Audio_Camera-shield)
+  * GR-PEACH Wireless CAMERA Shield : OV7725
 * One of the following networks
- * Ethernet
- * BP3592 (wifi)
- * GR-PEACH Wireless CAMERA Shield : ESP32 (wifi)
+  * Ethernet
+  * BP3592 (wifi)
+  * GR-PEACH Wireless CAMERA Shield : ESP32 (wifi)
 
 
 ### In the case of GR-LYCHEE
@@ -37,49 +37,47 @@ https://github.com/d-kato/GR-Boards_ESP32_Serial_Bridge
 ## How to use
 1. Turn on the power to the GR-Board and start the terminal software.
 
-2. When you press the reset button of GR-Board, the scan result of Wifi will be output on Terminal. Please refer to the following link for usage of Terminal.
-The default value of the bow rate with mbed is 9600, and in this sample we use the baud rate 9600.   
- https://developer.mbed.org/teams/Renesas/wiki/GR-PEACH-Getting-Started#install-the-usb-serial-communication  
- https://developer.mbed.org/handbook/SerialPC  
+2. When you press the reset button of GR-Board, the scan result of Wifi will be output on Terminal. Please refer to the following link for usage of Terminal. The default value of the bow rate with mbed is 9600, and in this sample we use the baud rate 9600.   
+  https://developer.mbed.org/teams/Renesas/wiki/GR-PEACH-Getting-Started#install-the-usb-serial-communication  
+  https://developer.mbed.org/handbook/SerialPC  
 
- ```
- ********* PROGRAM START ***********
- Network Setting up...
- Scan:
- No.0 Network: SSID_1 secured: WPA/WPA2 BSSID: xx:xx:xx:xx:xx:xx RSSI: -52 Ch: 1
- No.1 Network: SSID_2 secured: Unknown BSSID: xx:xx:xx:xx:xx:xx RSSI: -67 Ch: 2
- 2 networks available.
+  ```
+  ********* PROGRAM START ***********
+  Network Setting up...
+  Scan:
+  No.0 Network: SSID_1 secured: WPA/WPA2 BSSID: xx:xx:xx:xx:xx:xx RSSI: -52 Ch: 1
+  No.1 Network: SSID_2 secured: Unknown BSSID: xx:xx:xx:xx:xx:xx RSSI: -67 Ch: 2
+  2 networks available.
 
- Please enter the number of the network you want to connect.
- Enter key:[0]-[1], (If inputting the other key, it's scanned again.)
- ```
+  Please enter the number of the network you want to connect.
+  Enter key:[0]-[1], (If inputting the other key, it's scanned again.)
+  ```
 
- Enter the number of the network you want to connect from the keyboard.
- To select SSID_1, press "0" on the keyboard.  
+  Enter the number of the network you want to connect from the keyboard.
+  To select SSID_1, press "0" on the keyboard.  
 
- ```
- [SSID_1] is selected.
- please enter the PSK.
- ```
+  ```
+  [SSID_1] is selected.
+  please enter the PSK.
+  ```
 
- Finally, enter the password to connect to the network.    
+  Finally, enter the password to connect to the network.    
 
 3. If the connection is successful, the IP address is output on Terminal.  
- ```
- connecting...
- MAC Address is xx:xx:xx:xx:xx:xx
- IP Address is 192.168.0.2
- NetMask is 255.255.255.240
- Gateway Address is 192.168.0.1
- Network Setup OK
- ```
+  ```
+  connecting...
+  MAC Address is xx:xx:xx:xx:xx:xx
+  IP Address is 192.168.0.2
+  NetMask is 255.255.255.240
+  Gateway Address is 192.168.0.1
+  Network Setup OK
+  ```
 
 4. When you open **IP Address** ("192.168.0.2" in the above example) by a Web browser, top screen is indicated. The configuration of the top screen is a menu screen on the left side, a description screen of the sample program on the right side. If you click on each menu on the left side of the screen, the screen along the menu is indicated on the right screen.
 
 5. When you click the "Web camera" in the menu screen, the pictures of a camera is indicated. It can be changed at a slider bar in "Wait time" at the timing of a renewal of a camera picture. (Defaults are 500ms.)
 
-6. When you click the "Setting by I2C" of the menu screen, the control screen of the device connected to the I2C bus is indicated. By sending a command of a format listed below("Format of the device set by I2C") in Direct input or File reference, data transmission and reception is possible with respect to devices connected to I2C_SDA and I2C_SCL terminals of I2C.  
-The communication log of transmission and reception by "Format of the device set by I2C" is displayed in the log window. When you press the "Clear" button, the log is cleared. When you press the "Save" button, the log is saved.  
+6. When you click the "Setting by I2C" of the menu screen, the control screen of the device connected to the I2C bus is indicated. By sending a command of a format listed below("Format of the device set by I2C") in Direct input or File reference, data transmission and reception is possible with respect to devices connected to I2C_SDA and I2C_SCL terminals of I2C. The communication log of transmission and reception by "Format of the device set by I2C" is displayed in the log window. When you press the "Clear" button, the log is cleared. When you press the "Save" button, the log is saved.  
 
 7. When you click the "LED On/Off" of the menu screen, the LED control screen is indicated. Each switch switches of GR-Boards to ON or OFF. Each switch indicates the current LED state. When the LED is On, the color of switch will change the LED color.
 
@@ -120,7 +118,7 @@ GR-LYCHEEを付属品のみで動作させる場合はNETWORK_TYPE 2と3が選�
   WLAN_SSID, WLAN_PSK and WLAN_SECURITY set the information of the access point to be connected. However, in the case of ``SCAN_NETWORK = 1``, these values are not referenced, and the connection destination is selected based on the scan result displayed on Terminal.  
 
 * In the case ``NETWORK_TYPE = 3``  
- WLAN_SSID, WLAN_PSK and WLAN_SECURITY sets the information as AP published by ESP32.  
+ WLAN_SSID, WLAN_PSK and WLAN_SECURITY set the information as AP published by ESP32.  
 
 ### Change the size of camera input images
 You can change the size of camera input images by changing the macro below in ``main.cpp``.   

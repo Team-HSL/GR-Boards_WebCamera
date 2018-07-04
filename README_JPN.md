@@ -13,14 +13,14 @@ Webカメラのサンプルです。Webブラウザからアクセスすると�
 ### GR-PEACHの場合
 * [GR-PEACH](https://os.mbed.com/platforms/Renesas-GR-PEACH/)
 * 以下のいずれかのカメラ
- * NTSC アナログカメラ
- * MT9V111 and [GR-PEACH AUDIO CAMERA Shield](https://os.mbed.com/teams/Renesas/wiki/Audio_Camera-shield)
- * OV5642 and [GR-PEACH AUDIO CAMERA Shield](https://os.mbed.com/teams/Renesas/wiki/Audio_Camera-shield)
- * GR-PEACH Wireless CAMERA Shield : OV7725
+  * NTSC アナログカメラ
+  * MT9V111 and [GR-PEACH AUDIO CAMERA Shield](https://os.mbed.com/teams/Renesas/wiki/Audio_Camera-shield)
+  * OV5642 and [GR-PEACH AUDIO CAMERA Shield](https://os.mbed.com/teams/Renesas/wiki/Audio_Camera-shield)
+  * GR-PEACH Wireless CAMERA Shield : OV7725
 * 以下のいずれかのネットワーク
- * Ethernet
- * BP3592 (wifi)
- * GR-PEACH Wireless CAMERA Shield : ESP32 (wifi)
+  * Ethernet
+  * BP3592 (wifi)
+  * GR-PEACH Wireless CAMERA Shield : ESP32 (wifi)
 
 
 ### GR-LYCHEEの場合
@@ -73,20 +73,14 @@ https://github.com/d-kato/GR-Boards_ESP32_Serial_Bridge
   Network Setup OK
   ```
 
-4. PCのWebブラウザで Terminalに表示された **IP Address** (上記例では 192.168.0.2)を開くと、トップ画面が表示されます。  
-  トップ画面は、左側にメニュー画面、右側にサンプルプログラムの説明画面という構成になっており、左画面の各メニューをクリックすると、メニューに沿った画面が右画面に表示されます。
+4. PCのWebブラウザで Terminalに表示された **IP Address** (上記例では 192.168.0.2)を開くと、トップ画面が表示されます。トップ画面は、左側にメニュー画面、右側にサンプルプログラムの説明画面という構成になっており、左画面の各メニューをクリックすると、メニューに沿った画面が右画面に表示されます。
 
 5. メニュー画面の”Web Camera”をクリックすると、Camera画像が表示されます。  
   "Wait time"のスライダーバーでCamera画像の更新タイミングが変更できます。(初期値は500msです)
 
-6. メニュー画面の"Setting by I2C"をクリックすると、I2Cバスに繋がっているデバイスの制御画面が表示されます。  
-  直接入力(Direct input)欄又はファイル参照(File reference)欄にて、下記("I2Cによるデバイス設定のフォーマット")に記載されているフォーマットのコマンドを送信する事で、I2CのI2C_SDA,I2C_SCL端子に繋がっているデバイスに対して、データの送受信が可能です。  
-  "I2Cによるデバイス設定のフォーマット"による送受信の通信ログは、ログウィンドウに表示されます。  
-  "Clear"ボタンを押すとログのクリア、"Save"ボタンを押すとログの保存ができます。  
+6. メニュー画面の"Setting by I2C"をクリックすると、I2Cバスに繋がっているデバイスの制御画面が表示されます。直接入力(Direct input)欄又はファイル参照(File reference)欄にて、下記("I2Cによるデバイス設定のフォーマット")に記載されているフォーマットのコマンドを送信する事で、I2CのI2C_SDA,I2C_SCL端子に繋がっているデバイスに対して、データの送受信が可能です。"I2Cによるデバイス設定のフォーマット"による送受信の通信ログは、ログウィンドウに表示されます。"Clear"ボタンを押すとログのクリア、"Save"ボタンを押すとログの保存ができます。  
 
-7. メニュー画面の"LED On/Off"をクリックすると、LED操作画面が表示されます。  
-  各スイッチはGR-BoardのLED ON/OFFを切り替えます。  
-  スイッチはそれぞれGR-BoardのLEDの現在の状態を表しており、ONにすると対応するLEDの色になります。  
+7. メニュー画面の"LED On/Off"をクリックすると、LED操作画面が表示されます。各スイッチはGR-BoardのLED ON/OFFを切り替えます。スイッチはそれぞれGR-BoardのLEDの現在の状態を表しており、ONにすると対応するLEDの色になります。  
 
 8. メニュー画面の"Top Page"をクリックすると、 トップ画面が表示されます。
 

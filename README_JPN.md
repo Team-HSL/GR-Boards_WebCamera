@@ -139,7 +139,8 @@ API``SetQuality()``の上限は**100**ですが、JPEG変換結果を格納す�
 ```
 
 ### カメラの設定
-カメラの指定を行う場合は``mbed_app.json``に``camera-type``を追加してください。
+カメラの指定を行う場合は``mbed_app.json``に``camera-type``を追加してください。  
+詳細は``mbed-gr-libs/README.md``を参照ください。  
 ```json
 {
     "config": {
@@ -158,15 +159,3 @@ API``SetQuality()``の上限は**100**ですが、JPEG変換結果を格納す�
     }
 }
 ```
-
-| camera-type "value"     | 説明                               |
-|:------------------------|:-----------------------------------|
-| CAMERA_CVBS             | GR-PEACH NTSC信号                  |
-| CAMERA_MT9V111          | GR-PEACH MT9V111                   |
-| CAMERA_OV7725           | GR-LYHCEE 付属カメラ               |
-| CAMERA_OV5642           | GR-PEACH OV5642                    |
-| CAMERA_WIRELESS_CAMERA  | GR-PEACH Wireless/Cameraシールド (OV7725) |
-
-camera-typeとlcd-typeを指定しない場合は以下の設定となります。  
-* GR-PEACH、カメラ：CAMERA_MT9V111  
-* GR-LYCHEE、カメラ：CAMERA_OV7725  

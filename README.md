@@ -85,8 +85,8 @@ When connecting the SD card, ``SDBlockDevice`` will be displayed on the terminal
 
 
 ### Change network connection
-You can change the network connection by changing the following macro in ``main.cpp``.
-GR-LYCHEEを付属品のみで動作させる場合はNETWORK_TYPE 2と3が選択できます。  
+You can change the network connection by changing the following macro in ``main.cpp``.  
+When using GR-LYCHEE alone, NETWORK_TYPE 2 and 3 can be selected.  
 
 ```cpp
 /**** User Selection *********/
@@ -137,7 +137,9 @@ In addition, you can change the number of pixels of the image by changing the fo
 ```
 
 ### Camera selection
-To select the Camera, add `` camera-type`` to `` mbed_app.json``.  
+To select the Camera, add ``camera-type`` to ``mbed_app.json``.  
+See [mbed-gr-libs/README.md](https://github.com/d-kato/mbed-gr-libs/blob/master/EasyAttach_CameraAndLCD/README.md) for details.  
+
 ```json
 {
     "config": {
@@ -147,24 +149,20 @@ To select the Camera, add `` camera-type`` to `` mbed_app.json``.
         },
         "camera-type":{
             "help": "Please see mbed-gr-libs/README.md",
-            "value": "CAMERA_CVBS"
+            "value": "CAMERA_WIRELESS_CAMERA"
         },
         "lcd":{
             "help": "0:disable 1:enable",
+            "value": "0"
+        },
+        "usb-host-ch":{
+            "help": "(for GR-PEACH) 0:ch0 1:ch1",
+            "value": "1"
+        },
+        "audio-camera-shield":{
+            "help": "(for GR-PEACH) 0:not use 1:use",
             "value": "1"
         }
     }
 }
 ```
-
-| camera-type "value"     | Description                        |
-|:------------------------|:-----------------------------------|
-| CAMERA_CVBS             | GR-PEACH NTSC signal               |
-| CAMERA_MT9V111          | GR-PEACH MT9V111                   |
-| CAMERA_OV7725           | GR-LYHCEE attached camera          |
-| CAMERA_OV5642           | GR-PEACH OV5642                    |
-| CAMERA_WIRELESS_CAMERA  | GR-PEACH Wireless CAMERA Shield (OV7725) |
-
-When camera-type is not selected, the following is set.  
-* GR-PEACH : CAMERA_MT9V111  
-* GR-LYCHEE : CAMERA_OV7725  

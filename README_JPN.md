@@ -140,7 +140,8 @@ API``SetQuality()``の上限は**100**ですが、JPEG変換結果を格納す�
 
 ### カメラの設定
 カメラの指定を行う場合は``mbed_app.json``に``camera-type``を追加してください。  
-詳細は``mbed-gr-libs/README.md``を参照ください。  
+詳細は[mbed-gr-libs/README.md](https://github.com/d-kato/mbed-gr-libs/blob/master/EasyAttach_CameraAndLCD/README.md)を参照ください。  
+
 ```json
 {
     "config": {
@@ -150,10 +151,18 @@ API``SetQuality()``の上限は**100**ですが、JPEG変換結果を格納す�
         },
         "camera-type":{
             "help": "Please see mbed-gr-libs/README.md",
-            "value": "CAMERA_CVBS"
+            "value": "CAMERA_WIRELESS_CAMERA"
         },
         "lcd":{
             "help": "0:disable 1:enable",
+            "value": "0"
+        },
+        "usb-host-ch":{
+            "help": "(for GR-PEACH) 0:ch0 1:ch1",
+            "value": "1"
+        },
+        "audio-camera-shield":{
+            "help": "(for GR-PEACH) 0:not use 1:use",
             "value": "1"
         }
     }

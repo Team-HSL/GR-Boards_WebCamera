@@ -114,7 +114,7 @@ static int snapshot_req(const char ** pp_data) {
     int encode_size;
 
     while ((jcu_encoding == 1) || (image_change == 0)) {
-        Thread::wait(1);
+        ThisThread::sleep_for(1);
     }
     jcu_buf_index_read = jcu_buf_index_write_done;
     image_change = 0;
@@ -375,7 +375,7 @@ static void sd_connect_task(void) {
                 printf("RomRamBlockDevice\r\n");
             }
         }
-        Thread::wait(250);
+        ThisThread::sleep_for(250);
     }
 }
 
@@ -400,9 +400,9 @@ int main(void) {
     //Audio Camera Shield USB1 enable for WlanBP3595
     DigitalOut usb1en(P3_8);
     usb1en = 1;        //Outputs high level
-    Thread::wait(5);
+    ThisThread::sleep_for(5);
     usb1en = 0;        //Outputs low level
-    Thread::wait(5);
+    ThisThread::sleep_for(5);
 #endif
 
     printf("Network Setting up...\r\n");
